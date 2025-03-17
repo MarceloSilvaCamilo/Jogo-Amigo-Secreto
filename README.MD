@@ -35,7 +35,7 @@
     Vídeo de Demonstração:
     <br /><br />
     <video width="600" controls>
-      <source src="assets/uso.mp4" type="video/mp4">
+      <img src="assets/uso.mp4" type="video/mp4">
       Seu navegador não suporta o elemento de vídeo.
     </video>
   </h3>
