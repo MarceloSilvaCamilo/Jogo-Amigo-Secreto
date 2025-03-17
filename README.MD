@@ -35,7 +35,7 @@
     Apresentação
     <br />
     <br />
-    <img src="assets/tela.png" alt="Captura da tela principal" style="width: 480px; height: auto;">
+    <img src="assets/tela.png" alt="Captura da tela principal" style="width: 880px; height: auto;">
   </h3>
 </div>
 
