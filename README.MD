@@ -29,12 +29,16 @@
    - Coloque seu nome no campo e clique no botão "Ver amigo secreto". O nome do seu amigo secreto será exibido com o aviso de que será mostrado apenas uma vez, e depois seu nome ficará bloqueado para novas consultas.
 5. **Reiniciar Sorteio:**
    - Use o botão "Reiniciar sorteio" para limpar a lista de participantes e os resultados, permitindo um novo sorteio.
- </ol>
-<h3>Vídeo de Demonstração:</h3>
-    <video width="100%" controls>
-        <source src="assets/uso.mp4" type="video/mp4">
-        Seu navegador não suporta o elemento de vídeo.
-    </video>
+ 
+<div align="center">
+  <h3 align="center">
+    Vídeo de Demonstração:
+    <br />
+    <br />
+    <source src="assets/uso.mp4" type="video/mp4" alt="Vídeo de apresentação" style="width: 150px; height: auto;">
+  </h3>
+</div>
+
 
 ## Uso
 
