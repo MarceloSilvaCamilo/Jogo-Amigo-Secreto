@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700;900&display=swap" rel="stylesheet">
+
+    <title>Amigo Secreto</title>
+
+    <style>
+        /* Estilo para os participantes sorteados */
+        .sorted-list li {
+            color: green;
+            font-weight: bold;
+        }
+
+        /* Estilo para o ponto de interrogação ao lado do nome sorteado */
+        .sorted-list span {
+            color: red;
+            margin-left: 10px;
+        }
+
+        /* Estilo comum para botões (Sortear, Reiniciar e Adicionar) */
+        .button-draw, .button-reiniciar {
+            display: block;
+            width: 200px;
+            margin: 10px auto;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        /* Estilo para o botão Sortear (diferente do botão Reiniciar) */
+        .button-draw {
+            background-color: #008CBA;
+        }
+
+        /* Estilo para o botão quando passa o mouse sobre ele */
+        .button-draw:hover, .button-reiniciar:hover {
+            background-color: #45a049;
+        }
+
+        /* Estilo para o campo de input (Seu nome) */
+        .input-name {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        /* Estilo quando o campo de input está em foco */
+        .input-name:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        /* Alinhamento e estilo da seção de botões */
+        .button-container {
+            margin-top: 20px;
+        }
+
+        /* Alinha os campos de entrada ao centro da tela */
+        .input-wrapper {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Estilo da seção principal de conteúdo */
+        .main-content {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Estilo para o título das seções */
+        .section-title {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        /* Estilo para o botão "Adicionar" */
+        .button-add {
+            display: block;
+            width: 150px;
+            margin: 10px auto;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* Estilo para o botão "Adicionar" ao passar o mouse */
+        .button-add:hover {
+            background-color: #45a049;
+        }
+
+        /* Estilo para a lista de participantes */
+        .name-list {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        /* Estilo para cada item da lista */
+        .name-list li {
+            padding: 5px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="main-content">
+        <!-- Navegação com os botões Início e Sobre -->
+        <div class="buttons__nav__menu">
+            <button class="button__nav__menu__inicio" onclick="location.href='index.html'">Início</button>
+            <button class="button__nav__menu__sobre" onclick="location.href='about.html'">Sobre</button>
+        </div>
+
+        <!-- Cabeçalho com o título e a imagem do amigo secreto -->
+        <header class="header-banner">
+            <h1 class="main-title">Amigo Secreto</h1>
+            <img src="assets/amigo-secreto.png" alt="Imagem representativa de amigo secreto">
+        </header>
+
+        <!-- Seção de adição de participantes -->
+        <section class="input-section">
+            <h2 class="section-title">Adicione os participantes</h2>
+            <div class="input-wrapper">
+                <!-- Campo de input para digitar o nome do participante -->
+                <input type="text" id="amigo" class="input-name" placeholder="Digite um nome">
+                <!-- Botão para adicionar o nome à lista -->
+                <button class="button-add" onclick="adicionarAmigo()">Adicionar</button>
+            </div>
+
+            <!-- Lista de participantes adicionados -->
+            <ul id="listaAmigos" class="name-list"></ul>
+
+            <!-- Botão para realizar o sorteio -->
+            <button class="button-draw" onclick="realizarSorteio()">Sortear</button>
+
+            <h2 class="section-title">Digite seu nome para ver seu amigo secreto</h2>
+            <div class="input-wrapper">
+                <!-- Campo de input para o participante digitar seu nome e ver o amigo secreto -->
+                <input type="text" id="nomeParticipante" class="input-name" placeholder="Seu nome">
+                <!-- Botão para o participante ver seu amigo secreto -->
+                <button class="button-draw" onclick="sortearParaParticipante()">Ver amigo secreto</button>
+            </div>
+
+            <!-- Botão para reiniciar o sorteio -->
+            <div class="button-container">
+                <button class="button-reiniciar" onclick="reiniciarSorteio()">Reiniciar sorteio</button>
+            </div>
+        </section>
+
+        <!-- Rodapé com informações do desenvolvedor -->
+        <footer class="rodape">
+            <p><a href="https://github.com/barbiedeti"> Criado com 💻 e ☕ por: CodeOnTheSpectrum</a></p>
+            <p>&copy; 2025 Amigo Secreto Alura + ONE G8</p>
+        </footer>
+    </main>
+
+    <script>
+        let amigos = []; // Array que armazena os participantes
+        let sorteio = {}; // Objeto que mapeia cada participante ao seu amigo secreto
+        let amigosSorteados = []; // Array que armazena os nomes dos participantes que já viram seu amigo secreto
+        let sorteioRealizado = false; // Flag para indicar se o sorteio já foi realizado
+
+        // Função para adicionar um novo amigo à lista
+        function adicionarAmigo() {
+            if (sorteioRealizado) {
+                alert('O sorteio já foi realizado! Reinicie para adicionar novos participantes.');
+                return;
+            }
+
+            const nomeAmigo = document.getElementById('amigo').value.trim();
+
+            if (!nomeAmigo) {
+                alert('Por favor, insira um nome antes de adicionar.');
+                return;
+            }
+
+            if (amigos.includes(nomeAmigo)) {
+                alert('Este nome já está na lista.');
+                return;
+            }
+
+            amigos.push(nomeAmigo); // Adiciona o nome à lista de amigos
+            atualizarLista(); // Atualiza a exibição da lista
+            document.getElementById('amigo').value = ''; // Limpa o campo de input
+        }
+
+        // Função para atualizar a lista de participantes na tela
+        function atualizarLista() {
+            const lista = document.getElementById('listaAmigos');
+            lista.innerHTML = amigos.map(amigo => `<li>${amigo}</li>`).join('');
+        }
+
+        // Função para embaralhar os nomes (para garantir que o sorteio seja aleatório)
+        function embaralhar(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]]; // Troca os elementos
+            }
+        }
+
+        // Função para realizar o sorteio
+        function realizarSorteio() {
+            if (amigos.length < 4) {
+                alert('É necessário pelo menos 4 participantes para o sorteio!');
+                return;
+            }
+            if (amigos.length % 2 !== 0) {
+                alert('O número de participantes deve ser par para realizar o sorteio!');
+                return;
+            }
+
+            sorteioRealizado = true; // Marca o sorteio como realizado
+
+            let participantes = [...amigos]; // Cria uma cópia dos participantes
+            embaralhar(participantes); // Embaralha a lista de participantes
+            let sorteados = [...participantes]; // Cria uma cópia para os sorteados
+            
+            // Garante que ninguém tire a si mesmo como amigo secreto
+            for (let i = 0; i < participantes.length; i++) {
+                if (participantes[i] === sorteados[i]) {
+                    embaralhar(sorteados);
+                    i = -1;
+                }
+            }
+
+            sorteio = {}; // Reseta o objeto de sorteio
+            for (let i = 0; i < participantes.length; i++) {
+                sorteio[participantes[i]] = sorteados[i]; // Mapeia cada participante ao seu amigo secreto
+            }
+
+            atualizarListaSorteada(); // Atualiza a lista com a indicação do sorteio realizado
+            alert('Sorteio realizado! Agora cada participante pode ver seu amigo secreto individualmente.');
+        }
+
+        // Função para atualizar a lista visualmente após o sorteio
+        function atualizarListaSorteada() {
+            const lista = document.getElementById('listaAmigos');
+            lista.innerHTML = amigos.map(amigo => 
+                `<li class="sorted-list">${amigo} <span>❓</span></li>`
+            ).join('');
+        }
+
+        // Função para o participante ver seu amigo secreto
+        function sortearParaParticipante() {
+            const nome = document.getElementById('nomeParticipante').value.trim();
+            
+            if (!sorteio[nome]) {
+                alert('Nome não encontrado na lista de participantes ou sorteio ainda não foi realizado.');
+                return;
+            }
+
+            if (amigosSorteados.includes(nome)) {
+                alert('Amigo Secreto já revelado.');
+                return;
+            }
+
+            alert(`ATENÇÃO! Grave bem seu amigo secreto, ele não será mostrado novamente!\n\nSeu amigo secreto é: ${sorteio[nome]}`);
+            amigosSorteados.push(nome); // Marca o participante como que já viu seu amigo secreto
+            document.getElementById('nomeParticipante').value = ''; // Limpa o campo de input
+        }
+
+        // Função para reiniciar o sorteio
+        function reiniciarSorteio() {
+            amigos = [];
+            sorteio = {};
+            amigosSorteados = [];
+            sorteioRealizado = false;
+
+            document.getElementById('listaAmigos').innerHTML = ''; // Limpa a lista de amigos
+            document.getElementById('nomeParticipante').value = ''; // Limpa o campo de nome
+        }
+    </script>
+</body>
+</html>
+
+

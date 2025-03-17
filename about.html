@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700;900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <title>Sobre - Amigo Secreto</title>
+    <style>
+        /* Manter o fundo com a imagem */
+        body {
+            background-image: url('assets/amigo-secreto.png'); /* Caminho da imagem */
+            background-size: cover; /* Faz a imagem cobrir todo o fundo */
+            background-position: center; /* Centraliza a imagem */
+            background-attachment: fixed; /* Mantém a imagem fixa durante o scroll */
+            font-family: 'Inter', sans-serif;
+        }
+
+        .main-content {
+            padding: 10px;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semitransparente para o texto se destacar */
+            border-radius: 10px; /* Borda arredondada para o container de conteúdo */
+            margin-top: 50px; /* Espaço acima do conteúdo */
+            min-height: 100vh; /* Garante que o conteúdo cubra toda a altura da página */
+        }
+
+        .about-section {
+            margin-top: 0; /* Remover qualquer margem superior extra */
+        }
+
+        .main-title {
+            font-size: 1.1em;
+            color: #0056b3; /* Cor azul para o título */
+            margin-bottom: 20px;
+        }
+
+        .developer-title {
+            font-size: 1.1em;
+            color: #0056b3; /* Cor azul para o título */
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 1.0em;
+            color: #000000; /* Texto preto */
+            line-height: 1.1;
+        }
+
+        ul {
+            font-size: 1.0em;
+            color: #000000; /* Texto preto */
+        }
+
+        .buttons__nav__menu {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .button__nav__menu__inicio {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .button__nav__menu__inicio:hover {
+            background-color: #004085;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="main-content">
+        <div class="buttons__nav__menu">
+            <button class="button__nav__menu__inicio" onclick="location.href='index.html'">Início</button>
+        </div>
+
+        <section class="about-section">
+            <h1 class="main-title">Sorteio de Amigo Secreto Alura</h1>
+            <p>Este projeto foi desenvolvido como parte da conclusão da fase de seleção do programa ONE (Oracle Next Education) em parceria com a Alura. </p>
+            
+            <h2 class="main-title">Funcionalidades</h2>
+            <ul>
+                <li><strong>1. Adicionar Participantes:</strong>
+                    <ul>
+                        <li>Insira o nome de cada participante no campo de texto e clique em "Adicionar".</li>
+                        <li>O nome será validado para garantir que não seja repetido.</li>
+                    </ul>
+                </li>
+                <li><strong>2. Lista de Participantes:</strong>
+                    <ul>
+                        <li>Todos os nomes adicionados são exibidos em uma lista abaixo do campo de entrada.</li>
+                    </ul>
+                </li>
+                <li><strong>3. Sortear:</strong>
+                    <ul>
+                        <li>O sorteio somente acontecerá quando houver pelo menos 4 participantes, e a lista contiver números pares de participantes.</li>
+                        <li>Clique no botão Sortear para embaralhar os nomes e gerar os pares do Amigo Secreto, que ficarão ocultos.</li>
+                        <li>Após o sorteio aparecerá o sinal de interrogação (?) na frente dos nomes e novos nomes não poderão ser acrescentados.</li>
+                    </ul>
+                </li>
+                <li><strong>4. Ver Amigo Secreto:</strong>
+                    <ul>
+                        <li>Coloque seu nome no campo e clique no botão “Ver amigo secreto”. O nome do seu amigo secreto será exibido com o aviso de que somente será mostrado uma vez e depois seu nome ficará bloqueado para novas consultas.</li>
+                    </ul>
+                </li>
+                <li><strong>5. Reiniciar Sorteio:</strong>
+                    <ul>
+                        <li>Use o botão "Reiniciar sorteio" para limpar a lista de participantes e os resultados, permitindo um novo sorteio.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h2 class="developer-title">Desenvolvedor</h2>
+            <p>Marcelo da Silva Camilo</p>
+        </section>
+    </main>
+</body>
+</html>
