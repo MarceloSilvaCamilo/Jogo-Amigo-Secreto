@@ -30,6 +30,12 @@
 5. **Reiniciar Sorteio:**
    - Use o botão "Reiniciar sorteio" para limpar a lista de participantes e os resultados, permitindo um novo sorteio.
 
+<h3>Vídeo de Demonstração:</h3>
+    <video width="100%" controls>
+        <source src="assets/uso.mp4" type="video/mp4">
+        Seu navegador não suporta o elemento de vídeo.
+    </video>
+
 ## Uso
 
 O jogo de amigo secreto é uma diversão popular em várias ocasiões, como:
