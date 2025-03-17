@@ -33,11 +33,14 @@
 <div align="center">
   <h3 align="center">
     Vídeo de Demonstração:
-    <br />
-    <br />
-    <source src="assets/uso.mp4" type="video/mp4" alt="Vídeo de apresentação" style="width: 150px; height: auto;">
+    <br /><br />
+    <video width="600" controls>
+      <source src="assets/uso.mp4" type="video/mp4">
+      Seu navegador não suporta o elemento de vídeo.
+    </video>
   </h3>
 </div>
+
 
 
 ## Uso
