@@ -30,6 +30,14 @@
 5. **Reiniciar Sorteio:**
    - Use o botão "Reiniciar sorteio" para limpar a lista de participantes e os resultados, permitindo um novo sorteio.
  
+<div align="center">
+  <h3 align="center">
+    Apresentação
+    <br />
+    <br />
+    <img src="assets/tela.png" alt="Captura da tela principal" style="width: 150px; height: auto;">
+  </h3>
+</div>
 
 
 ## Uso
