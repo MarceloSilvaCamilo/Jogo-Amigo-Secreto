@@ -1,6 +1,6 @@
 <div align="center">
   <h1 align="center">
-    Amigo Secreto Alura
+    Amigo Secreto Alura - 
     Alura Secret Santa
     <br />
     <br />
