@@ -1,6 +1,7 @@
 <div align="center">
   <h1 align="center">
     Amigo Secreto Alura
+    Alura Secret Santa
     <br />
     <br />
     <img src="assets/logo_amigo_secreto.png" alt="Logo Amigo Secreto" style="width: 150px; height: auto;">
